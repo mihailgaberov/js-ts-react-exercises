@@ -455,3 +455,28 @@ console.log(str.at(-2));
 // l
 // because te methods return the item on the specified index in both arrays or stings
 ```
+
+## 26. WeakRef and Finalizers (Advanced)
+
+```javascript
+let obj = { data: "Important" };
+const weakRef = new WeakRef(obj);
+
+obj = null; // Dereference the object
+
+setTimeout(() => {
+  console.log(weakRef.deref());
+}, 1000);
+
+// Question: What will be logged after setTimeout runs? Why?
+
+// A WeakRef is a reference to an object that does not prevent the object from being garbage collected.
+// When you create a WeakRef to an object, it holds a "weak" reference, meaning the object can still be garbage collected if there are no strong references to it.
+// Dereferencing the Object:
+
+// const weakRef = new WeakRef(obj); creates a weak reference to obj.
+// After obj = null;, the strong reference to the object is removed. Since weakRef is the only reference left, and it is weak, the object is now eligible for garbage collection.
+// weakRef.deref():
+
+// The deref() method on a WeakRef returns the object if it has not been garbage collected. If the object has been garbage collected, it returns undefined.
+```
