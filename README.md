@@ -146,5 +146,22 @@ console.log("End");
 // Question: What will be logged and in what order?
 // Start, End, Promise, Timeout
 // First two are clear, then the promise is going to be first as it is considered as a micro task in the event loop whereas the timeout is a macro task, and micro tasks get executed before the macro ones.
+```
 
+## 10. Variable Shadowing & Block Scope
+
+```javascript
+let x = 1;
+
+function test() {
+  console.log(x);
+  let x = 2;
+}
+
+test();
+
+// Question: What will be logged, or will there be an error? Why?
+
+// ReferenceError: Cannot access 'x' before initialization
+// because 'let' hoists only declataion but no initialization, if we replace it with 'var' in this case it will log 'undefined' as 'var' hoists both the declaration and initialization to undefined.
 ```
