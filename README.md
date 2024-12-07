@@ -81,4 +81,36 @@ greet();
 // undefined because greet is invoked in the global context, in order to fix it we could use 'bing', i.e. const greet = person.greet.bind(person) - in this case 'this' would be considered in the context of the object 'person' and will console.log the name 'Sam'
 ```
 
+## 6. Immediately Invoked Function Expressions (IIFE)
 
+```javascript
+(function () {
+  let a = 10;
+  console.log(a);
+})();
+
+console.log(typeof a);
+// Question: What will be printed and why?
+
+// 10
+// undefined
+// because the iife creates its own function scope and the value of a there would be 10 as declared, but in the outside scope it doesn't exist and the type of it would be undefined
+```
+
+## 7. Currying & Partial Application
+
+```javascript
+function add(a) {
+  return function (b) {
+    return a + b;
+  };
+}
+
+const addFive = add(5);
+console.log(addFive(3));
+
+// Question: What will be logged to the console?
+
+// 8
+// because first invokation of 'add' creates a closure that 'freezes' the number 5 which is available on the second call where we use number 3, so the result would be 5 + 3
+```
