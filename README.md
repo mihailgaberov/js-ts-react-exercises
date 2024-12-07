@@ -244,3 +244,21 @@ person1.sayHello();
 
 ## 15. Type Coercion & NaN
 
+```javascript
+console.log("5" - 2);
+console.log("5" + 2);
+console.log(true + false);
+console.log(null + 1);
+console.log(undefined + 1);
+
+// 3
+// 52
+// 1
+// 1
+// NaN
+
+// + triggers string concatenation when at least one operand is a string.
+// Arithmetic operators (-, *, /) trigger numeric coercion.
+// Booleans: true → 1, false → 0.
+// `null` becomes 0, while `undefined` becomes NaN in mathematical expressions.
+```
