@@ -221,3 +221,26 @@ console.log(obj);
 // { key: "newValue" }
 // because we pass the referencers to the object themselfes (array is also considered as Object in JS), not copies of their values, and thus mutate their values
 ```
+
+## 14. Prototypal Inheritance
+
+```javascript
+function Person(name) {
+  this.name = name;
+}
+
+Person.prototype.sayHello = function () {
+  console.log(`Hello, my name is ${this.name}`);
+};
+
+const person1 = new Person("Alice");
+person1.sayHello();
+
+// Question: What will be logged? How does prototypal inheritance work here?
+
+// Hello, my name is Alice
+// beause we create an instance of the Person object, whose protypes methods are available in all instances created by it
+```
+
+## 15. Type Coercion & NaN
+
