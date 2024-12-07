@@ -199,4 +199,25 @@ console.log(x, y);
 
 // because the destructuring takes into account the order of the params in the objects/arrays
 ```
-##
+
+## 13. Array & Object Mutation
+
+```javascript
+const arr = [1, 2, 3];
+const obj = { key: "value" };
+
+function mutate(array, object) {
+  array.push(4);
+  object.key = "newValue";
+}
+
+mutate(arr, obj);
+console.log(arr);
+console.log(obj);
+
+// Question: What will be printed and why?
+
+// [1, 2, 3, 4]
+// { key: "newValue" }
+// because we pass the referencers to the object themselfes (array is also considered as Object in JS), not copies of their values, and thus mutate their values
+```
