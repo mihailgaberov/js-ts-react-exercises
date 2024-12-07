@@ -348,6 +348,7 @@ console.log(a, b, c, d);
 ```
 
 ## 21. Promise.allSettled
+
 ```javascript
 const promises = [
   Promise.resolve("Success"),
@@ -363,4 +364,33 @@ Promise.allSettled(promises).then((results) => console.log(results));
 // value: The resolved value (if fulfilled)
 // reason: The error value (if rejected)
 // Promise.all stops on the first rejection
+```
+
+## 22. Private Class Fields (#)
+
+```javascript
+class Person {
+  #secret = "Hidden";
+
+  getSecret() {
+    return this.#secret;
+  }
+}
+
+const p = new Person();
+console.log(p.getSecret());
+console.log(p.#secret);
+
+// Hidden
+// Uncaught SyntaxError: Private field '#secret' must be declared in an enclosing class
+// because Private Field Declaration:
+// The #secret field is declared as private by using the # symbol.
+// Private fields are only accessible inside the class.
+// Access Through a Method:
+
+// The method getSecret() can access #secret because it’s inside the Person class.
+// This returns "Hidden" correctly.
+// Direct Access Attempt:
+
+// console.log(p.#secret); will throw a SyntaxError because #secret is not accessible outside the class.
 ```
