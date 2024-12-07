@@ -333,3 +333,16 @@ console.log(a, b, c, d);
 // defaultA, defaultB, 0, ""
 // because the nullish coalescing operator returns its right-hand side operand when its left-hand side operand is null or undefined, and otherwise returns its left-hand side operand.
 ```
+
+## 20. Dynamic Imports
+
+```javascript
+(async () => {
+  const { greet } = await import("./utils.js");
+  greet("John");
+})();
+
+// How does the dynamic import work here and what are the benefits?
+
+// import() is a function that returns a Promise when called, it is used to load JavaScript modules dynamically at runtime. Benefits are code splitting, lazy loading, conditional loading (if this then import this file, else this file), runtime module loading and better perf.
+```
