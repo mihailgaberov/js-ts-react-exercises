@@ -394,3 +394,34 @@ console.log(p.#secret);
 
 // console.log(p.#secret); will throw a SyntaxError because #secret is not accessible outside the class.
 ```
+
+## 23. Logical Assignment Operators (&&=, ||=, ??=)
+
+```javascript
+let x = 0;
+let y = null;
+let z = 5;
+
+x ||= 10;
+y ??= 20;
+z &&= 30;
+
+console.log(x, y, z);
+// 10 20 30
+
+// Logical OR Assignment (||=):
+// x ||= 10 means "if x is falsy (e.g., 0, null, undefined, false), assign 10 to x."
+// x = 0 is falsy, so x becomes 10.
+// Nullish Coalescing Assignment (??=):
+
+// y ??= 20 means "if y is null or undefined, assign 20 to y."
+// y = null is nullish, so y becomes 20.
+// Logical AND Assignment (&&=):
+
+// z &&= 30 means "if z is truthy, assign 30 to z."
+// z = 5 is truthy, so z becomes 30.
+
+// x = 10 (because 0 is falsy, so it was replaced by 10)
+// y = 20 (because null is nullish, so it was replaced by 20)
+// z = 30 (because 5 is truthy, so it was replaced by 30)
+```
