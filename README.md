@@ -114,3 +114,18 @@ console.log(addFive(3));
 // 8
 // because first invokation of 'add' creates a closure that 'freezes' the number 5 which is available on the second call where we use number 3, so the result would be 5 + 3
 ```
+
+## 8. Equality Check (== vs ===)
+
+```javascript
+console.log(0 == "0");
+console.log(0 === "0");
+console.log(false == "0");
+
+// Question: What will be logged and why?
+
+//  true
+// false
+// true
+// because the first and the last check are not strict and don't consider the types of the operan, whereas the second is strict equality and check the values and the types of the operands
+```
