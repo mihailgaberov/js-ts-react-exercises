@@ -346,3 +346,21 @@ console.log(a, b, c, d);
 
 // import() is a function that returns a Promise when called, it is used to load JavaScript modules dynamically at runtime. Benefits are code splitting, lazy loading, conditional loading (if this then import this file, else this file), runtime module loading and better perf.
 ```
+
+## 21. Promise.allSettled
+```javascript
+const promises = [
+  Promise.resolve("Success"),
+  Promise.reject("Error"),
+  Promise.resolve("Another success"),
+];
+
+Promise.allSettled(promises).then((results) => console.log(results));
+// Question: What will be logged, and how does Promise.allSettled differ from Promise.all?
+
+// Promise.allSettled() waits for all promises to settle, meaning they are either fulfilled or rejected. It never short-circuits and always returns an array of results, where each result is an object with:
+// status: "fulfilled" or "rejected"
+// value: The resolved value (if fulfilled)
+// reason: The error value (if rejected)
+// Promise.all stops on the first rejection
+```
