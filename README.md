@@ -57,8 +57,28 @@ greet();
 greet(undefined);
 greet(null);
 
+//Question: What will be printed for each call?
+
 // Stranger,
 // Stranger,
 // null
 // because empty or undefined are considered as missing values and trigger the default value, whereas null is still an existing object but initialized as nothing
 ```
+
+## 5. `this` Context
+
+```javascript
+const person = {
+  name: "Sam",
+  greet() {
+    console.log(this.name);
+  },
+};
+
+const greet = person.greet;
+greet();
+// Question: What will be logged and why?
+// undefined because greet is invoked in the global context, in order to fix it we could use 'bing', i.e. const greet = person.greet.bind(person) - in this case 'this' would be considered in the context of the object 'person' and will console.log the name 'Sam'
+```
+
+
