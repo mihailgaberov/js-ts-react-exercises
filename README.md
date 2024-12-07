@@ -319,3 +319,17 @@ console.log(user.profile?.contact?.phone);
 // undefined
 // because the `phone` props is missing, but since we use the optional chaining operator, the code still works (instead of throwing an error for trying to access an undefined) and we will log just `undefined`
 ```
+
+## 19. Nullish Coalescing Operator (??)
+
+```javascript
+const a = null ?? "defaultA";
+const b = undefined ?? "defaultB";
+const c = 0 ?? 42;
+const d = "" ?? "defaultD";
+
+console.log(a, b, c, d);
+
+// defaultA, defaultB, 0, ""
+// because the nullish coalescing operator returns its right-hand side operand when its left-hand side operand is null or undefined, and otherwise returns its left-hand side operand.
+```
