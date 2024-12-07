@@ -282,3 +282,20 @@ console.log(process(5, square));
 // 25
 // because in js the functions are first class citizens and we can pass them as normal arguments to another functions
 ```
+
+## 17. Function Binding
+
+```javascript
+const person = {
+  name: "John",
+  greet() {
+    console.log(`Hello, ${this.name}`);
+  },
+};
+
+const greet = person.greet.bind({ name: "Doe" });
+greet();
+
+// Hello, Doe
+// because the `greet` function is binder with the context of the object we pass to it
+```
