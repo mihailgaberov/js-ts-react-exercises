@@ -425,3 +425,15 @@ console.log(x, y, z);
 // y = 20 (because null is nullish, so it was replaced by 20)
 // z = 30 (because 5 is truthy, so it was replaced by 30)
 ```
+
+## 24. Top-Level await (ES2022)
+
+```javascript
+// Assuming we are in a module environment
+const response = await fetch("https://jsonplaceholder.typicode.com/todos/1");
+const data = await response.json();
+console.log(data);
+
+// Top-level await simplifies asynchronous code by allowing direct use of await in modules, eliminating the need to wrap async logic inside functions and improving code readability and maintainability.
+// Without top-level await, you would need to wrap asynchronous code in an async function, With top-level await, you can write asynchronous code directly in the module
+```
