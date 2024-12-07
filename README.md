@@ -437,3 +437,21 @@ console.log(data);
 // Top-level await simplifies asynchronous code by allowing direct use of await in modules, eliminating the need to wrap async logic inside functions and improving code readability and maintainability.
 // Without top-level await, you would need to wrap asynchronous code in an async function, With top-level await, you can write asynchronous code directly in the module
 ```
+
+## 25. at() Method for Arrays and Strings
+
+```javascript
+const arr = [10, 20, 30, 40, 50];
+console.log(arr.at(2));
+console.log(arr.at(-1));
+
+const str = "Hello";
+console.log(str.at(1));
+console.log(str.at(-2));
+
+// 30
+// 50
+// e
+// l
+// because te methods return the item on the specified index in both arrays or stings
+```
