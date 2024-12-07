@@ -182,3 +182,21 @@ console.log(sum());
 // 0
 // because the spread operator gets all input argiuments and sum them up via the 'reduce', but in the second case don't pass anything, and the numbers array that is created by the spread operator is considered as empty, i.e. and we only get the initializing value of the reduce function which is 0
 ```
+
+## 12. Destructuring & Default Values
+
+```javascript
+const { a, b = 2 } = { a: 1 };
+console.log(a, b);
+
+const [x, y = 3] = [5];
+console.log(x, y);
+
+// Question: What will be logged for both console.log statements?
+
+// 1, 2
+// 5, 3
+
+// because the destructuring takes into account the order of the params in the objects/arrays
+```
+##
