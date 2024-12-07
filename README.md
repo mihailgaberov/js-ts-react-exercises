@@ -299,3 +299,23 @@ greet();
 // Hello, Doe
 // because the `greet` function is binder with the context of the object we pass to it
 ```
+
+## 18. Optional Chaining (?.)
+
+```javascript
+const user = {
+  profile: {
+    name: "Alice",
+    address: {
+      city: "Wonderland",
+    },
+  },
+};
+
+console.log(user.profile?.address?.city);
+console.log(user.profile?.contact?.phone);
+
+// Wonderland
+// undefined
+// because the `phone` props is missing, but since we use the optional chaining operator, the code still works (instead of throwing an error for trying to access an undefined) and we will log just `undefined`
+```
