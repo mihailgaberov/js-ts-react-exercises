@@ -165,3 +165,20 @@ test();
 // ReferenceError: Cannot access 'x' before initialization
 // because 'let' hoists only declataion but no initialization, if we replace it with 'var' in this case it will log 'undefined' as 'var' hoists both the declaration and initialization to undefined.
 ```
+
+## 11. Rest & Spread Operators
+
+```javascript
+function sum(...numbers) {
+  return numbers.reduce((acc, curr) => acc + curr, 0);
+}
+
+console.log(sum(1, 2, 3));
+console.log(sum());
+
+// Question: What will be the output of both console.log calls?
+
+// 6
+// 0
+// because the spread operator gets all input argiuments and sum them up via the 'reduce', but in the second case don't pass anything, and the numbers array that is created by the spread operator is considered as empty, i.e. and we only get the initializing value of the reduce function which is 0
+```
