@@ -129,3 +129,22 @@ console.log(false == "0");
 // true
 // because the first and the last check are not strict and don't consider the types of the operan, whereas the second is strict equality and check the values and the types of the operands
 ```
+
+## 9. Event Loop & Asynchronous Behavior
+
+```javascript
+console.log("Start");
+
+setTimeout(() => {
+  console.log("Timeout");
+}, 0);
+
+Promise.resolve().then(() => console.log("Promise"));
+
+console.log("End");
+
+// Question: What will be logged and in what order?
+// Start, End, Promise, Timeout
+// First two are clear, then the promise is going to be first as it is considered as a micro task in the event loop whereas the timeout is a macro task, and micro tasks get executed before the macro ones.
+
+```
