@@ -262,3 +262,23 @@ console.log(undefined + 1);
 // Booleans: true → 1, false → 0.
 // `null` becomes 0, while `undefined` becomes NaN in mathematical expressions.
 ```
+
+## 16. Callbacks & Higher-Order Functions
+
+```javascript
+function process(num, callback) {
+  return callback(num);
+}
+
+const double = (x) => x * 2;
+const square = (x) => x ** 2;
+
+console.log(process(5, double));
+console.log(process(5, square));
+
+// Question: What will be printed for both calls?
+
+// 10
+// 25
+// because in js the functions are first class citizens and we can pass them as normal arguments to another functions
+```
