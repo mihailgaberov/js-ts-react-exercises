@@ -127,7 +127,7 @@ console.log(false == "0");
 //  true
 // false
 // true
-// because the first and the last check are not strict and don't consider the types of the operan, whereas the second is strict equality and check the values and the types of the operands
+// because the first and the last check are not strict and don't consider the types of the operands, whereas the second is strict equality and check the values and the types of the operands
 ```
 
 ## 9. Event Loop & Asynchronous Behavior
