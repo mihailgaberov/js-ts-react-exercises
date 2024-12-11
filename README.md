@@ -219,7 +219,7 @@ console.log(obj);
 
 // [1, 2, 3, 4]
 // { key: "newValue" }
-// because we pass the referencers to the object themselfes (array is also considered as Object in JS), not copies of their values, and thus mutate their values
+// because we pass the referencers to the object themselves, not their values (array is also considered as Object in JS), not copies of their values, and thus mutate their values
 ```
 
 ## 14. Prototypal Inheritance
