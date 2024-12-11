@@ -297,7 +297,7 @@ const greet = person.greet.bind({ name: "Doe" });
 greet();
 
 // Hello, Doe
-// because the `greet` function is binder with the context of the object we pass to it
+// because the `greet` function is binded with the context of the object we pass to it
 ```
 
 ## 18. Optional Chaining (?.)
