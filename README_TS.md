@@ -1,7 +1,3 @@
-Here's the complete `README.md` file with all sections included:
-
----
-
 # 📚 Advanced TypeScript Exercises with Answers
 
 An advanced collection of TypeScript exercises covering types, generics, mapped types, utility types, and more. Each exercise includes the answer and a detailed explanation.
@@ -15,7 +11,7 @@ An advanced collection of TypeScript exercises covering types, generics, mapped 
 3. [Utility Types and Conditional Types](#3-utility-types-and-conditional-types)
 4. [Type Guards and Advanced Type Inference](#4-type-guards-and-advanced-type-inference)
 5. [Decorators and Metadata](#5-decorators-and-metadata)
-6. [Enums and Literal Types](#6-enums-and-literal-types)
+6. [Miscellaneous TypeScript Features](#6-miscellaneous-typescript-features)
 7. [Advanced Generics and Constraints](#7-advanced-generics-and-constraints)
 8. [Mapped Types in Depth](#8-mapped-types-in-depth)
 9. [Conditional Types (Advanced Usage)](#9-conditional-types-advanced-usage)
@@ -24,6 +20,318 @@ An advanced collection of TypeScript exercises covering types, generics, mapped 
 12. [Module Augmentation and Declaration Merging](#12-module-augmentation-and-declaration-merging)
 
 ---
+
+## **1. Type Inference and Type Annotations**
+
+### **1.1 Type Inference with Variables**
+
+```typescript
+let message: string = "Hello, TypeScript!";
+message = 123; // What happens here?
+```
+
+### **Answer:**
+
+```
+TypeScript Error: Type 'number' is not assignable to type 'string'.
+```
+
+**Why:** The variable `message` is declared with a type `string`, so assigning a number causes a TypeScript type error.
+
+---
+
+### **1.2 Type Inference without Annotations**
+
+```typescript
+let value = "TypeScript";
+value = true; // What happens here?
+```
+
+### **Answer:**
+
+```
+TypeScript Error: Type 'boolean' is not assignable to type 'string'.
+```
+
+**Why:** TypeScript infers the type of `value` as `string` during initialization.
+
+---
+
+### **1.3 Type Assertions**
+
+```typescript
+let unknownValue: any = "Hello World";
+let strLength: number = (unknownValue as string).length;
+
+console.log(strLength);
+```
+
+### **Answer:**
+
+```
+11
+```
+
+**Why:** The type assertion `as string` tells TypeScript that `unknownValue` should be treated as a string.
+
+---
+
+---
+
+## **2. Interfaces, Types, and Generics**
+
+### **2.1 Generics with Functions**
+
+```typescript
+function reverseArray<T>(items: T[]): T[] {
+  return items.reverse();
+}
+
+console.log(reverseArray<number>([1, 2, 3]));
+console.log(reverseArray<string>(["a", "b", "c"]));
+```
+
+### **Answer:**
+
+```
+[3, 2, 1]
+['c', 'b', 'a']
+```
+
+**Why:** The function `reverseArray` uses a generic type `T`, allowing it to work with both numbers and strings.
+
+---
+
+### **2.2 Extending Interfaces**
+
+```typescript
+interface Animal {
+  name: string;
+}
+
+interface Dog extends Animal {
+  breed: string;
+}
+
+const myDog: Dog = { name: "Buddy", breed: "Golden Retriever" };
+console.log(myDog);
+```
+
+### **Answer:**
+
+```
+{ name: 'Buddy', breed: 'Golden Retriever' }
+```
+
+**Why:** `Dog` extends `Animal`, so objects of type `Dog` must have both `name` and `breed` properties.
+
+---
+
+### **2.3 Using `keyof` in Generics**
+
+```typescript
+function getProperty<T, K extends keyof T>(obj: T, key: K) {
+  return obj[key];
+}
+
+const person = { name: "John", age: 30 };
+console.log(getProperty(person, "name"));
+```
+
+### **Answer:**
+
+```
+John
+```
+
+**Why:** The function uses `keyof T` to ensure `key` exists on the provided object `obj`.
+
+---
+
+---
+
+## **3. Utility Types and Conditional Types**
+
+### **3.1 `Partial<T>` Utility Type**
+
+```typescript
+interface Task {
+  title: string;
+  description: string;
+}
+
+function updateTask(task: Task, updates: Partial<Task>) {
+  return { ...task, ...updates };
+}
+
+const task1: Task = { title: "Learn TypeScript", description: "Master TS" };
+const updatedTask = updateTask(task1, { description: "Practice daily" });
+console.log(updatedTask);
+```
+
+### **Answer:**
+
+```
+{ title: 'Learn TypeScript', description: 'Practice daily' }
+```
+
+**Why:** `Partial<T>` makes all properties optional, enabling partial updates.
+
+---
+
+### **3.2 `Required<T>` Utility Type**
+
+```typescript
+interface Options {
+  id?: number;
+  username?: string;
+}
+
+function createUser(options: Required<Options>) {
+  console.log(options);
+}
+
+createUser({ id: 1, username: "JohnDoe" });
+```
+
+### **Answer:**
+
+```
+{ id: 1, username: 'JohnDoe' }
+```
+
+**Why:** `Required<T>` makes all properties required, enforcing their presence.
+
+---
+
+---
+
+## **4. Type Guards and Advanced Type Inference**
+
+### **4.1 Type Guards with `typeof`**
+
+```typescript
+function printId(id: string | number) {
+  if (typeof id === "string") {
+    console.log(`ID as string: ${id.toUpperCase()}`);
+  } else {
+    console.log(`ID as number: ${id}`);
+  }
+}
+
+printId(123);
+printId("abc");
+```
+
+### **Answer:**
+
+```
+ID as number: 123
+ID as string: ABC
+```
+
+**Why:** TypeScript uses `typeof` to narrow down the type within the function.
+
+---
+
+### **4.2 Discriminated Unions**
+
+```typescript
+type Circle = { kind: "circle"; radius: number };
+type Square = { kind: "square"; side: number };
+
+type Shape = Circle | Square;
+
+function calculateArea(shape: Shape) {
+  switch (shape.kind) {
+    case "circle":
+      return Math.PI * shape.radius ** 2;
+    case "square":
+      return shape.side ** 2;
+  }
+}
+
+console.log(calculateArea({ kind: "circle", radius: 5 }));
+```
+
+### **Answer:**
+
+```
+78.53981633974483
+```
+
+**Why:** The discriminated union uses the `kind` property to differentiate between types.
+
+---
+
+---
+
+## **5. Decorators and Metadata**
+
+### **5.1 Class Decorators**
+
+```typescript
+function LogClass(target: Function) {
+  console.log(`Class ${target.name} initialized.`);
+}
+
+@LogClass
+class Service {
+  constructor() {
+    console.log("Service instance created.");
+  }
+}
+
+const service = new Service();
+```
+
+### **Answer:**
+
+```
+Class Service initialized.
+Service instance created.
+```
+
+**Why:** The class decorator `@LogClass` is called when the class is defined.
+
+---
+
+---
+
+## **6. Miscellaneous TypeScript Features**
+
+### **6.1 Enum Basics**
+
+```typescript
+enum Status {
+  Active,
+  Inactive,
+  Pending,
+}
+
+const currentStatus = Status.Active;
+console.log(currentStatus);
+```
+
+### **Answer:**
+
+```
+0
+```
+
+**Why:** Enums in TypeScript default to numeric values starting from `0`.
+
+---
+
+---
+
+## **Contributing**
+
+Feel free to open an issue or submit a pull request if you'd like to add more exercises or improve the answers.
+
+---
+
+Let me know if you'd like additional sections or more detailed explanations for specific topics! 🚀
 
 ## **7. Advanced Generics and Constraints**
 
