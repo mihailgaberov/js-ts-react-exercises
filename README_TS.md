@@ -325,14 +325,6 @@ console.log(currentStatus);
 
 ---
 
-## **Contributing**
-
-Feel free to open an issue or submit a pull request if you'd like to add more exercises or improve the answers.
-
----
-
-Let me know if you'd like additional sections or more detailed explanations for specific topics! 🚀
-
 ## **7. Advanced Generics and Constraints**
 
 ### **7.1 Generic Constraints with `extends`**
