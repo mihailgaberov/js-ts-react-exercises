@@ -7,3 +7,4 @@ This repository contains various README files that include exercises, questions,
 - [JavaScript Exercises](JS.md)
 - [React Exercises](REACT.md)
 - [TypeScript Exercises](TS.md)
+- [Questions and Answers](QnA.md)
