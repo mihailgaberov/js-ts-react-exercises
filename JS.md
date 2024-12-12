@@ -28,6 +28,11 @@
 - [24. Top-Level await (ES2022)](#24-top-level-await-es2022)
 - [25. at() Method for Arrays and Strings](#25-at-method-for-arrays-and-strings)
 - [26. WeakRef and Finalizers (Advanced)](#26-weakref-and-finalizers-advanced)
+- [27. Symbols and Iterators](#27-symbols-and-iterators)
+- [28. Proxy and Reflect](#28-proxy-and-reflect)
+- [29. Advanced Promises](#29-advanced-promises)
+- [30. Generators and Async Generators](#30-generators-and-async-generators)
+- [31. Advanced Function Patterns](#31-advanced-function-patterns)
 
 ## 1. Scopes & Closures
 
@@ -514,3 +519,259 @@ setTimeout(() => {
 
 // The deref() method on a WeakRef returns the object if it has not been garbage collected. If the object has been garbage collected, it returns undefined.
 ```
+
+## 27. Symbols and Iterators
+
+### 27.1 Unique Symbol
+
+```javascript
+const sym1 = Symbol("id");
+const sym2 = Symbol("id");
+
+console.log(sym1 === sym2);
+```
+
+### Answer:
+
+```
+false
+```
+
+**Why:** Symbols are always unique, even if created with the same description.
+
+---
+
+### 27.2 Custom Iterator
+
+```javascript
+const myIterable = {
+  *[Symbol.iterator]() {
+    yield 1;
+    yield 2;
+    yield 3;
+  },
+};
+
+for (const value of myIterable) {
+  console.log(value);
+}
+```
+
+### Answer:
+
+```
+1
+2
+3
+```
+
+**Why:** Defining `[Symbol.iterator]()` makes the object iterable in a `for...of` loop.
+
+---
+
+---
+
+## 28. Proxy and Reflect
+
+### 28.1 Basic Proxy
+
+```javascript
+const target = { name: "John" };
+const handler = {
+  get(obj, prop) {
+    return prop in obj ? obj[prop] : "Not Found";
+  },
+};
+
+const proxy = new Proxy(target, handler);
+console.log(proxy.name);
+console.log(proxy.age);
+```
+
+### Answer:
+
+```
+John
+Not Found
+```
+
+**Why:** The `get` trap intercepts access, returning a fallback if the property doesn't exist.
+
+---
+
+### 28.2 Reflect Usage
+
+```javascript
+const user = { age: 30 };
+
+Reflect.set(user, "age", 40);
+console.log(user.age);
+```
+
+### Answer:
+
+```
+40
+```
+
+**Why:** `Reflect.set` updates the property directly on the object.
+
+---
+
+---
+
+## 29. Advanced Promises
+
+### 29.1 Chained Promises
+
+```javascript
+Promise.resolve(1)
+  .then((x) => x * 2)
+  .then((x) => Promise.resolve(x + 3))
+  .then(console.log);
+```
+
+### Answer:
+
+```
+5
+```
+
+**Why:** Each `.then()` returns a promise, chaining transformations step by step.
+
+---
+
+### 29.2 Promise.any()
+
+```javascript
+const promises = [
+  Promise.reject("Error"),
+  Promise.resolve("Success 1"),
+  Promise.resolve("Success 2"),
+];
+
+Promise.any(promises).then(console.log).catch(console.error);
+```
+
+### Answer:
+
+```
+Success 1
+```
+
+**Why:** `Promise.any()` resolves to the first fulfilled promise or throws an AggregateError if none succeed.
+
+---
+
+---
+
+## 30. Generators and Async Generators
+
+### 30.1 Basic Generator
+
+```javascript
+function* generateSequence() {
+  yield 1;
+  yield 2;
+  yield 3;
+}
+
+const gen = generateSequence();
+console.log(gen.next().value);
+console.log(gen.next().value);
+console.log(gen.next().value);
+```
+
+### Answer:
+
+```
+1
+2
+3
+```
+
+**Why:** Generators yield values lazily, pausing and resuming execution on `next()` calls.
+
+---
+
+### 30.2 Async Generator Example
+
+```javascript
+async function* asyncGen() {
+  yield "Loading...";
+  await new Promise((r) => setTimeout(r, 1000));
+  yield "Done!";
+}
+
+(async () => {
+  for await (const message of asyncGen()) {
+    console.log(message);
+  }
+})();
+```
+
+### Answer:
+
+```
+Loading...
+Done!
+```
+
+**Why:** Async generators combine asynchronous and lazy iteration.
+
+---
+
+---
+
+## 31. Advanced Function Patterns
+
+### 31.1 Function Context Binding
+
+```javascript
+const user = {
+  name: "Alice",
+  greet() {
+    console.log(`Hello, ${this.name}`);
+  },
+};
+
+const greetFn = user.greet;
+greetFn(); // Not bound
+
+const boundGreetFn = user.greet.bind(user);
+boundGreetFn(); // Bound
+```
+
+### Answer:
+
+```
+Hello, undefined
+Hello, Alice
+```
+
+**Why:** Without `bind()`, `this` refers to `undefined` or `global` in non-strict mode.
+
+---
+
+### 31.2 Currying Example
+
+```javascript
+function multiply(a) {
+  return function (b) {
+    return a * b;
+  };
+}
+
+const double = multiply(2);
+console.log(double(5));
+```
+
+### Answer:
+
+```
+10
+```
+
+**Why:** Currying transforms the function into one that returns another function.
+
+---
