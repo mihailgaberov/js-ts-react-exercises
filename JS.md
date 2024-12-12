@@ -1,3 +1,34 @@
+# 📚 JavaScript Exercises
+
+## Table of Contents
+
+- [1. Scopes & Closures](#1-scopes--closures)
+- [2. Hoisting](#2-hoisting)
+- [3. Reference vs Value](#3-reference-vs-value)
+- [4. Function Parameters & Default Values](#4-function-parameters--default-values)
+- [5. `this` Context](#5-this-context)
+- [6. Immediately Invoked Function Expressions (IIFE)](#6-immediately-invoked-function-expressions-iife)
+- [7. Currying & Partial Application](#7-currying--partial-application)
+- [8. Equality Check (== vs ===)](#8-equality-check-vs-)
+- [9. Event Loop & Asynchronous Behavior](#9-event-loop--asynchronous-behavior)
+- [10. Variable Shadowing & Block Scope](#10-variable-shadowing--block-scope)
+- [11. Rest & Spread Operators](#11-rest--spread-operators)
+- [12. Destructuring & Default Values](#12-destructuring--default-values)
+- [13. Array & Object Mutation](#13-array--object-mutation)
+- [14. Prototypal Inheritance](#14-prototypal-inheritance)
+- [15. Type Coercion & NaN](#15-type-coercion--nan)
+- [16. Callbacks & Higher-Order Functions](#16-callbacks--higher-order-functions)
+- [17. Function Binding](#17-function-binding)
+- [18. Optional Chaining (?.)](#18-optional-chaining-)
+- [19. Nullish Coalescing Operator (??)](#19-nullish-coalescing-operator-)
+- [20. Dynamic Imports](#20-dynamic-imports)
+- [21. Promise.allSettled](#21-promiseallsettled)
+- [22. Private Class Fields (#)](#22-private-class-fields-)
+- [23. Logical Assignment Operators (&&=, ||=, ??=)](#23-logical-assignment-operators---)
+- [24. Top-Level await (ES2022)](#24-top-level-await-es2022)
+- [25. at() Method for Arrays and Strings](#25-at-method-for-arrays-and-strings)
+- [26. WeakRef and Finalizers (Advanced)](#26-weakref-and-finalizers-advanced)
+
 ## 1. Scopes & Closures
 
 ```javascript
@@ -347,6 +378,7 @@ console.log(a, b, c, d);
 // How does the dynamic import work here and what are the benefits?
 
 // import() is a function that returns a Promise when called, it is used to load JavaScript modules dynamically at runtime. Benefits are code splitting, lazy loading, conditional loading (if this then import this file, else this file), runtime module loading and better perf.
+// Without top-level await, you would need to wrap asynchronous code in an async function, With top-level await, you can write asynchronous code directly in the module
 ```
 
 ## 21. Promise.allSettled
