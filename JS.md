@@ -16,6 +16,8 @@ test();
 // Question: What will be logged after both calls to fn()?
 // 1
 // 2
+
+//Why: inner forms a closure over count in outer. Each call increases count.
 ```
 
 ## 2. Hoisting
