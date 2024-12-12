@@ -186,6 +186,23 @@ console.log("End");
 // First two are clear, then the promise is going to be first as it is considered as a micro task in the event loop whereas the timeout is a macro task, and micro tasks get executed before the macro ones.
 ```
 
+```javascript
+async function example() {
+  console.log("Before await");
+  await Promise.resolve();
+  console.log("After await");
+}
+
+example();
+console.log("End of script");
+
+// Before await
+// End of script
+// After await
+
+// Why: The await creates a microtask, allowing the event loop to continue running the synchronous code before resolving the microtask.
+```
+
 ## 10. Variable Shadowing & Block Scope
 
 ```javascript
