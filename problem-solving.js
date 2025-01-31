@@ -108,3 +108,46 @@ var isValidSudoku = function (board) {
   return true;
 };
 // =======================================================================================
+
+/* Given an integer array nums and an integer k, return the k most frequent elements within the array.
+
+The test cases are generated such that the answer is always unique.
+
+You may return the output in any order.
+
+Example 1:
+
+Input: nums = [1,2,2,3,3,3], k = 2
+
+Output: [2,3] */
+/**
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {number[]}
+ */
+var topKFrequent = function (nums, k) {
+  const count = {};
+  const freq = Array.from({ length: nums.length + 1 }, () => []);
+
+  for (let i = 0; i < nums.length; i++) {
+    if (!count[nums[i]]) {
+      count[nums[i]] = 1;
+    } else {
+      count[nums[i]]++;
+    }
+  }
+
+  for (const n in count) {
+    freq[count[n]].push(parseInt(n));
+  }
+
+  const res = [];
+  for (let i = freq.length - 1; i > 0; i--) {
+    for (const n of freq[i]) {
+      res.push(n);
+      if (res.length === k) {
+        return res;
+      }
+    }
+  }
+};

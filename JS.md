@@ -116,7 +116,7 @@ const person = {
 const greet = person.greet;
 greet();
 // Question: What will be logged and why?
-// undefined because greet is invoked in the global context, in order to fix it we could use 'bing', i.e. const greet = person.greet.bind(person) - in this case 'this' would be considered in the context of the object 'person' and will console.log the name 'Sam'
+// undefined because greet is invoked in the global context, in order to fix it we could use 'binа', i.e. const greet = person.greet.bind(person) - in this case 'this' would be considered in the context of the object 'person' and will console.log the name 'Sam'
 ```
 
 ## 6. Immediately Invoked Function Expressions (IIFE)
