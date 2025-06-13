@@ -1,6 +1,6 @@
 # 📚 Questions and Answers
 
-## 1. What is aMiddleware in JS
+## 1. What is a Middleware in JS
 
 In the context of JavaScript, particularly in Node.js and Express.js, middleware refers to a software design pattern that enables functions to be executed sequentially, processing incoming requests and outgoing responses. Middleware functions act as an intermediary layer between the client and the server, allowing for:
 
