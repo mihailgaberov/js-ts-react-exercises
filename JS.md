@@ -218,7 +218,7 @@ test();
 // Question: What will be logged, or will there be an error? Why?
 
 // ReferenceError: Cannot access 'x' before initialization
-// because 'let' hoists only declataion but no initialization, if we replace it with 'var' in this case it will log 'undefined' as 'var' hoists both the declaration and initialization to undefined.
+// because 'let' hoists only declaration but no initialization, if we replace it with 'var' in this case it will log 'undefined' as 'var' hoists both the declaration and initialization to undefined.
 ```
 
 ## 11. Rest & Spread Operators
