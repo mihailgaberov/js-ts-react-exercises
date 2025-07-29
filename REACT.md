@@ -42,7 +42,7 @@
 2. `Context` + `ShouldComponentUpdate` might be dangerous. Why is
    that?
 
-   It is not a good idea to use these two together, because the `Context` updates don't respect the `shouldComponentUpdate` and will re-render all subscriberd components any time the context changes. This can potentially cause unexpected behavior. The way to go around this is to use `useContext` hook inside functional components and avoid using `shouldComponentUpdate` with context dependent components.
+   It is not a good idea to use these two together, because the `Context` updates don't respect the `shouldComponentUpdate` and will re-render all subscribed components any time the context changes. This can potentially cause unexpected behavior. The way to go around this is to use `useContext` hook inside functional components and avoid using `shouldComponentUpdate` with context dependent components.
 
 3. Describe 3 ways to pass information from a component to its
    PARENT.
